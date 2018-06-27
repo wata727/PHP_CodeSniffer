@@ -310,6 +310,7 @@ class Runner
     {
         // The class that manages all reporters for the run.
         $this->reporter = new Reporter($this->config);
+        $this->reporter->deprecatedWarnings = $this->ruleset->deprecatedWarnings;
 
         // Include bootstrap files.
         foreach ($this->config->bootstrap as $bootstrap) {

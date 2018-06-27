@@ -54,6 +54,7 @@ interface Report
         $totalErrors,
         $totalWarnings,
         $totalFixable,
+        $deprecatedWarnings,
         $showSources=false,
         $width=80,
         $interactive=false,

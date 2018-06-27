@@ -197,11 +197,17 @@ class Full implements Report
         $totalErrors,
         $totalWarnings,
         $totalFixable,
+        $deprecatedWarnings,
         $showSources=false,
         $width=80,
         $interactive=false,
         $toScreen=true
     ) {
+        foreach ($deprecatedWarnings as $warning) {
+            echo "WARNING: ".$warning;
+        }
+        echo PHP_EOL;
+
         if ($cachedData === '') {
             return;
         }

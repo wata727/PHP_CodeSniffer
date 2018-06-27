@@ -60,6 +60,8 @@ class Reporter
      */
     public $totalFixed = 0;
 
+    public $deprecatedWarnings = [];
+
     /**
      * When the PHPCS run started.
      *
@@ -226,6 +228,7 @@ class Reporter
             $this->totalErrors,
             $this->totalWarnings,
             $this->totalFixable,
+            $this->deprecatedWarnings,
             $this->config->showSources,
             $this->config->reportWidth,
             $this->config->interactive,

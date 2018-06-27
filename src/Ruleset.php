@@ -101,6 +101,8 @@ class Ruleset
      */
     public $ruleset = [];
 
+    public $deprecatedWarnings = [];
+
     /**
      * The directories that the processed rulesets are in.
      *
@@ -845,6 +847,8 @@ class Ruleset
         $ref  = (string) $rule['ref'];
         $todo = [$ref];
 
+        $this->checkDeprecatedSniffs($ref);
+
         $parts = explode('.', $ref);
         if (count($parts) <= 2) {
             // We are processing a standard or a category of sniffs.
@@ -1058,6 +1062,12 @@ class Ruleset
 
     }//end processRule()
 
+    private function checkDeprecatedSniffs($ref)
+    {
+        if ($ref == "Squiz.WhiteSpace.LanguageConstructSpacing") {
+            $this->deprecatedWarnings[] = "Squiz.WhiteSpace.LanguageConstructSpacing Sniff is deprecated and will be removed in 4.0. Please use Generic.WhiteSpace.LanguageConstructSpacing instead.";
+        }
+    }
 
     /**
      * Determine if an element should be processed or ignored.
